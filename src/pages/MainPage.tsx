@@ -1,21 +1,32 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Box from "../components/Box";
 import Editor from "../components/Editor";
 
 const MainPage = () => {
+  const [edit, setEdit] = useState("");
+
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/tmp");
+      const {
+        data: { rs },
+      } = await axios.get("/tmp");
 
-      console.log(data);
+      setEdit(rs);
     })();
   }, []);
+
+  useEffect(() => {
+    if (edit.length > 0)
+      axios.post("/tmp", {
+        content: edit,
+      });
+  }, [edit]);
 
   return (
     <Box p="16px">
       <h1>클라우드 메모장</h1>
-      <Editor />
+      <Editor value={edit} onChange={setEdit} />
     </Box>
   );
 };
