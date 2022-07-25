@@ -60,11 +60,14 @@ const MainPage = () => {
 
   return (
     <Box p="16px">
-      <h1>클라우드 메모장</h1>
+      <h1>Cloud Memo</h1>
       <Editor value={edit} onChange={setEdit} />
       <Flex justifyContent={"flex-end"} style={{ gap: "8px" }}>
         <Button mt="8px" onClick={handleSubmit}>
           제출
+        </Button>
+        <Button mt="8px" onClick={() => navigate("/manager")}>
+          관리자
         </Button>
       </Flex>
       {memoList.map((value) => (

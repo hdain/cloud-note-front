@@ -20,7 +20,7 @@ const Button = styled.button<
   background-color: #fff;
   border: 1px solid #ccc;
   height: 32px;
-  width: ${({ square }) => (square ? "32px" : "64px")};
+  width: ${({ square }) => (square ? "32px" : "72px")};
   :hover {
     border-color: #0066cc;
     color: #0066cc;
