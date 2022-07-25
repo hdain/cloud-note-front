@@ -79,6 +79,11 @@ const MainPage = () => {
           <Box fontSize={"12px"} color="#555" textAlign={"right"}>
             생성: {new Date(value.created_at).toLocaleString()}
           </Box>
+          {value.updated_at && (
+            <Box fontSize={"12px"} color="#555" textAlign={"right"}>
+              수정: {new Date(value.updated_at).toLocaleString()}
+            </Box>
+          )}
         </Flex>
       ))}
     </Box>
