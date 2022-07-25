@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "../components/Box";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
@@ -7,6 +8,8 @@ import Flex from "../components/Flex";
 import Memo from "../interface/Memo";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
   const [edit, setEdit] = useState("");
   const [memoList, setMemoList] = useState<Memo[]>([]);
 
@@ -64,6 +67,8 @@ const MainPage = () => {
       </Button>
       {memoList.map((value) => (
         <Flex
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/" + value.id)}
           border={"1px solid #ccc"}
           p="12px"
           my="8px"

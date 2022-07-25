@@ -11,11 +11,16 @@ import {
 } from "styled-system";
 import { BoxProps } from "./Box";
 
-const Button = styled.button<BoxProps>`
+const Button = styled.button<
+  BoxProps & {
+    square?: boolean;
+  }
+>`
+  cursor: pointer;
   background-color: #fff;
   border: 1px solid #ccc;
   height: 32px;
-  width: 64px;
+  width: ${({ square }) => (square ? "32px" : "64px")};
   :hover {
     border-color: #0066cc;
     color: #0066cc;
