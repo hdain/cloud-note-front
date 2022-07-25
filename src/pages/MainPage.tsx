@@ -62,9 +62,11 @@ const MainPage = () => {
     <Box p="16px">
       <h1>클라우드 메모장</h1>
       <Editor value={edit} onChange={setEdit} />
-      <Button mt="8px" onClick={handleSubmit}>
-        제출
-      </Button>
+      <Flex justifyContent={"flex-end"} style={{ gap: "8px" }}>
+        <Button mt="8px" onClick={handleSubmit}>
+          제출
+        </Button>
+      </Flex>
       {memoList.map((value) => (
         <Flex
           style={{ cursor: "pointer" }}
@@ -75,7 +77,10 @@ const MainPage = () => {
           flexDirection="column"
           key={value.created_at}
         >
-          <Box dangerouslySetInnerHTML={{ __html: value.content }} />
+          <Box
+            className="memo-content"
+            dangerouslySetInnerHTML={{ __html: value.content }}
+          />
           <Box fontSize={"12px"} color="#555" textAlign={"right"}>
             생성: {new Date(value.created_at).toLocaleString()}
           </Box>

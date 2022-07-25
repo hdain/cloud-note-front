@@ -1,3 +1,4 @@
+import { css, Global } from "@emotion/react";
 import axios from "axios";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -8,9 +9,18 @@ axios.defaults.baseURL = "http://localhost:3000";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <>
+      <Global
+        styles={css`
+          .memo-content img {
+            max-width: 100%;
+          }
+        `}
+      />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </>
   );
 }
 

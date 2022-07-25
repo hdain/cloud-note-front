@@ -33,7 +33,10 @@ const MemoDetailPage = () => {
         <VscChevronLeft />
       </Button>
       <Flex border={"1px solid #ccc"} p="12px" my="8px" flexDirection="column">
-        <Box dangerouslySetInnerHTML={{ __html: memo.content }} />
+        <Box
+          className="memo-content"
+          dangerouslySetInnerHTML={{ __html: memo.content }}
+        />
         <Box fontSize={"12px"} color="#555" textAlign={"right"}>
           생성: {new Date(memo.created_at).toLocaleString()}
         </Box>
