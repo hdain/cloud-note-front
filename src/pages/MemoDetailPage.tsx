@@ -1,15 +1,17 @@
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Box from "../components/Box";
 import Button from "../components/Button";
 import Flex from "../components/Flex";
 import Memo from "../interface/Memo";
-import { VscChevronLeft, VscEdit, VscTrash } from "react-icons/vsc";
+import { VscChevronLeft, VscCopy, VscEdit, VscTrash } from "react-icons/vsc";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const MemoDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [memo, setMemo] = useState<Memo | null>(null);
 
   useEffect(() => {
@@ -47,6 +49,16 @@ const MemoDetailPage = () => {
         )}
       </Flex>
       <Flex justifyContent={"flex-end"} style={{ gap: 8 }}>
+        <CopyToClipboard
+          text={window.location.host + location.pathname}
+          onCopy={() => {
+            alert("복사되었습니다.");
+          }}
+        >
+          <Button square>
+            <VscCopy />
+          </Button>
+        </CopyToClipboard>
         <Button square onClick={() => navigate("edit")}>
           <VscEdit />
         </Button>
