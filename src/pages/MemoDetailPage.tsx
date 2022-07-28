@@ -5,7 +5,13 @@ import Box from "../components/Box";
 import Button from "../components/Button";
 import Flex from "../components/Flex";
 import Memo from "../interface/Memo";
-import { VscChevronLeft, VscCopy, VscEdit, VscTrash } from "react-icons/vsc";
+import {
+  VscChevronLeft,
+  VscCopy,
+  VscEdit,
+  VscLiveShare,
+  VscTrash,
+} from "react-icons/vsc";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const MemoDetailPage = () => {
@@ -49,6 +55,18 @@ const MemoDetailPage = () => {
         )}
       </Flex>
       <Flex justifyContent={"flex-end"} style={{ gap: 8 }}>
+        <Button
+          square
+          onClick={() => {
+            window.navigator.share({
+              title: "cloud memo share",
+              text: memo.content,
+              url: window.location.href,
+            });
+          }}
+        >
+          <VscLiveShare />
+        </Button>
         <CopyToClipboard
           text={window.location.host + location.pathname}
           onCopy={() => {
